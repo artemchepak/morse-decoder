@@ -37,6 +37,12 @@ const MORSE_TABLE = {
     '-----':  '0',
 };
 
+const binaryToMorse = {
+    '10': '.',
+    '11': '-',
+    '00': ''
+}
+
 function decode(expr) {
     let result = '';
   
@@ -62,7 +68,7 @@ function decode(expr) {
         result = result + MORSE_TABLE[wordInMorse]; 
       } 
     }
-    return result;
+    return result.trim();
   }
 
 module.exports = {
