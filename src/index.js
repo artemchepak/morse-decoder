@@ -38,8 +38,32 @@ const MORSE_TABLE = {
 };
 
 function decode(expr) {
-    // write your solution here
-}
+    let result = '';
+  
+    for(i = 0; i < expr.length - 1; i = i + 10){
+      // resultInMorse = resultInMorse + binaryToMorse[expr.slice(i, i + 2)];
+      currentWord = expr.slice(i, i + 10);
+      wordInMorse = '';
+      if(currentWord === '**********'){
+        wordInMorse = ' ';
+        result = result + wordInMorse;
+      }
+      else{
+        for(n = 0; n < currentWord.length - 1; n = n + 2){
+  
+          if(binaryToMorse[currentWord.slice(n, n + 2)] === ''){
+            wordInMorse = wordInMorse;
+          }
+          else{
+            wordInMorse = wordInMorse + binaryToMorse[currentWord.slice(n, n + 2)];
+          }
+  
+        }
+        result = result + MORSE_TABLE[wordInMorse]; 
+      } 
+    }
+    return result;
+  }
 
 module.exports = {
     decode
